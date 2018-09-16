@@ -4,6 +4,8 @@ open module systems.cauldron.service.springboot {
 
     requires org.apache.logging.log4j;
 
+    requires spring.context;
+    requires spring.beans;
     requires spring.web;
 
     requires spring.boot;

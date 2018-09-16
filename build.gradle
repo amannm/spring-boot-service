@@ -23,13 +23,11 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2+'
 
     //container
-    provided group: 'javax.annotation', name: 'javax.annotation-api', version: '1+'
-    compile group: 'org.springframework', name: 'spring-core', version: '5+'
+    compile group: 'org.springframework', name: 'spring-beans', version: '5+'
     compile group: 'org.springframework', name: 'spring-web', version: '5+'
     compile group: 'org.springframework', name: 'spring-webflux', version: '5+'
 
     //web server
-    provided group: 'javax.servlet', name: 'javax.servlet-api', version: '4+'
     compile group: 'io.undertow', name: 'undertow-core', version: '2+'
     compile group: 'io.undertow', name: 'undertow-servlet', version: '2+'
 
