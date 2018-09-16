@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import systems.cauldron.service.springboot.domain.ExampleEntity;
 
 @Service
-public class ExampleData {
+public class ExampleDataService {
 
     public ExampleEntity getData() {
         ExampleEntity entity = new ExampleEntity();
