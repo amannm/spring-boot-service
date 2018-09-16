@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import systems.cauldron.service.springboot.data.ExampleDataService;
 import systems.cauldron.service.springboot.domain.ExampleEntity;
+import systems.cauldron.service.springboot.orchestration.ExampleOrchestrator;
 
 @RestController
 @RequestMapping("/")
 public class ExampleController {
 
     @Autowired
-    private ExampleDataService exampleDataService;
+    private ExampleOrchestrator exampleOrchestrator;
 
     @GetMapping
     public String get() {
@@ -21,6 +21,6 @@ public class ExampleController {
 
     @GetMapping("test")
     public ExampleEntity getTest() {
-        return exampleDataService.getData();
+        return exampleOrchestrator.getData();
     }
 }
