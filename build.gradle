@@ -1,53 +1,26 @@
 plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
 }
 
 group 'systems.cauldron'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 10
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-
-    //logging
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2+'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2+'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-jul', version: '2+'
-
-    //application
-    compile group: 'org.springframework.boot', name: 'spring-boot', version: '2+'
-    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2+'
-
-    //container
-    compile group: 'org.springframework', name: 'spring-beans', version: '5+'
-    compile group: 'org.springframework', name: 'spring-web', version: '5+'
-    compile group: 'org.springframework', name: 'spring-webflux', version: '5+'
-
-    //web server
-    compile group: 'io.undertow', name: 'undertow-core', version: '2+'
-    compile group: 'io.undertow', name: 'undertow-servlet', version: '2+'
-
-    //data binding
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2+'
-    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: '2+'
-    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2+'
-    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-parameter-names', version: '2+'
-
-    //unit testing
-    testCompile group: 'junit', name: 'junit', version: '4+'
-
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
-compileJava {
-    inputs.property("moduleName", 'systems.cauldron.service.springboot')
-    doFirst {
-        options.compilerArgs = [
-                '--module-path', classpath.asPath,
-        ]
-        classpath = files()
-    }
+test {
+    useJUnitPlatform()
 }
